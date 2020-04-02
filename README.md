@@ -12,6 +12,7 @@ Tables To be Created:
 ## Pending_Items 
 ###### UI:
 > Modify View Pages with HTML and CSS and if possible use bootstrap
+> Validations using javascript
 ###### Questions:
 > Add Questions and Options in the view as well as Backend.
 ###### Backend:
