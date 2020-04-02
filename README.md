@@ -9,7 +9,11 @@ Tables To be Created:
 ###### 2. create table questions ( username varchar(20) , questionid int, answer varchar(80));
 ###### 3. create table consumerresult( parentuser varchar(30), consumer varchar(30) , result(30));
 
-## UI:
+## Pending_Items 
+###### UI:
 > Modify View Pages with HTML and CSS and if possible use bootstrap
-## Questions:
+###### Questions:
 > Add Questions and Options in the view as well as Backend.
+###### Backend:
+> Error Handling and RollBack Data in case of failures
+> Manual Testing 
