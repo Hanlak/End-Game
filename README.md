@@ -1,4 +1,9 @@
 # End-Game
+_Requriements_
+> IDE: IntellJ or Eclipe
+> Maven
+> MySql
+> Java 8
 
 ## DataBase Setup: 
 _My Sql Version- 5.*_
