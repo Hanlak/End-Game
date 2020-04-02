@@ -75,7 +75,7 @@ public class QuestionDao {
     }
 
     public int updateResult(ConsumerUser consumerUser, int score) {
-        String query = "update consumerresult set score = ? where parentuser =? and consumer =?";
+        String query = "update consumerresult set result = ? where parentuser =? and consumer =?";
         try {
             return template.update(query, score, consumerUser.getParentUser(), consumerUser.getUser());
         } catch (Exception e) {
