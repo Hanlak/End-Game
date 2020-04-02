@@ -4,6 +4,9 @@ _Requriements_
 2. Maven
 3. MySql
 4. Java 8
+5. apache tom cat server
+  5a. if Intellj it is available in plugin
+  5b. if eclipse you can configure the downlaoded tomcat server bin file
 
 ## DataBase Setup: 
 _My Sql Version- 5.*_
