@@ -25,7 +25,7 @@
 					<td>Password</td>
 					<td><input type="password" placeholder="Enter password" name="password" id="password"></td>
 				</tr>
-				<tr><td><button>Register</button></td><td></td></tr>
+				<tr><td><td><input type="submit" value="Register"></td></td><td></td></tr>
 			</table>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</form>

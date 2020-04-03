@@ -6,11 +6,11 @@
 <form action ="/forgotpasswordprocess" method = "post">
 <table>
 				<tr>
-					<td>Enter UserName</td>
+					<td>Enter EMail</td>
 					<td><input type="text" placeholder="Enter Email" name="email" id="email"></td>
 				</tr>
 								<tr>
-                					 <td><button>Submit</button></td>
+                					 <td><input type="submit" value="Submit"></td>
                 				</tr>
 				</table>
 </form>

@@ -14,9 +14,9 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/index">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><a href="about">About</a></li>
+      <li><a href="emailupdate">Email Update</a></li>
+      <li><a href="updatepassword">Password Update</a></li>
     </ul>
     <ul class="nav navbar-nav pull-right">
            <li class="active"><a href="/appLogout">logout</a></li>
