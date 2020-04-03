@@ -55,6 +55,7 @@
             %>
         </table>
         <button>Check Your Result</button>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
     </body>
 </html>

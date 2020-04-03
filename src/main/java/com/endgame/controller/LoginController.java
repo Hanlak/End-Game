@@ -6,6 +6,7 @@ import com.endgame.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -23,7 +24,7 @@ public class LoginController {
         return new User();
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     protected ModelAndView login() {
         ModelAndView modelandview = new ModelAndView("login");
         return modelandview;
@@ -36,11 +37,18 @@ public class LoginController {
         if (login != null) {
             if (user.getUsername().equals(login.getUsername())
                     && user.getPassword().equals(login.getPassword())) {
-                modelandview = new ModelAndView("questions");
+                modelandview = new ModelAndView("index");
             } else {
                 modelandview = new ModelAndView("login", "msg", "Invalid credentials");
             }
         } else modelandview = new ModelAndView("login", "msg", "user not existed");
         return modelandview;
+    }
+
+    @GetMapping("/appLogout")
+    public ModelAndView logout(ModelAndView modelAndView, SessionStatus sessionStatus) {
+        sessionStatus.setComplete();
+        modelAndView = new ModelAndView("login");
+        return modelAndView;
     }
 }

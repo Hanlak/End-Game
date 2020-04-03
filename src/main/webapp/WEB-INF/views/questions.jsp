@@ -6,6 +6,7 @@
     <body>
     <a href="/displayfreindsResult"><button>Attempted Results</button></a>
     <br/>
+    <br/>
         <form action="displayQuestion" method="POST">
         <h3>Select your Answers</h3>
         <table>
@@ -58,5 +59,6 @@
         </table>
         <button>Generate link</button>
         </form>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </body>
 </html>

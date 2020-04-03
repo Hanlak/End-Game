@@ -24,6 +24,7 @@
 				    <td><a href="register">Click Here To Register</a></td>
 				</tr>
 			</table>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</form>
 	</body>
 </html>
