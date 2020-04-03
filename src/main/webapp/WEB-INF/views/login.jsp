@@ -19,7 +19,7 @@
                         	</div></td><td></td>
                         	</tr>
 				<tr>
-				    <td><button>LogIn</button></td>
+				    <td><input type="submit" value="Login"></td>
 				    <td><a href="forgotpassword">Forgot Password</a></td>
 				    <td><a href="register">Click Here To Register</a></td>
 				</tr>

@@ -62,4 +62,44 @@ public class UserController {
         ModelAndView modelandview = new ModelAndView("forgotpassword");
         return modelandview;
     }
+
+    @GetMapping("/about")
+    public ModelAndView about(ModelAndView model) {
+        model = new ModelAndView("about");
+        return model;
+    }
+
+    @GetMapping("/emailupdate")
+    public ModelAndView updateemail() {
+        return new ModelAndView("emailupdate");
+    }
+
+    @GetMapping("/updatepassword")
+    public ModelAndView updatePassword() {
+        return new ModelAndView("updatepassword");
+    }
+
+    @PostMapping("/updatepasswordprocess")
+    public ModelAndView updatePasswordProcessor(@SessionAttribute("user") User user, @RequestParam("password") String password) {
+        int updatecheck = loginDao.updatePasswordViaUser(user.getUsername(), password);
+        if (updatecheck != 0) {
+            ModelAndView modelAndView = new ModelAndView("login");
+            modelAndView.addObject("msg", "password updated sucessfully");
+            return modelAndView;
+        }
+        ModelAndView modelAndView = new ModelAndView("updatepassword");
+        modelAndView.addObject("msg", "update password failed");
+        return modelAndView;
+    }
+
+    @PostMapping("/updateemailprocess")
+    public ModelAndView updateEmailProcessor(@SessionAttribute("user") User user, String email) {
+        int updatecheck = loginDao.updateEmailViaUser(user.getUsername(), email);
+        ModelAndView modelAndView = new ModelAndView("emailupdate");
+        if (updatecheck != 0) {
+            modelAndView.addObject("msg", "mail update success");
+        }
+        modelAndView.addObject("msg", " mail has been updated successfully");
+        return modelAndView;
+    }
 }

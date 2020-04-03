@@ -19,6 +19,7 @@ body {
 
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <h4>URL Has Been Generated Successfully. Please Share This Url.</h4>
 <div>
 <b><a href = ${urlfinal}>${urlfinal}</a></b>

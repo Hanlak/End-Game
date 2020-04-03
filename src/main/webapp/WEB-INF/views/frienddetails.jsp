@@ -14,7 +14,7 @@
 					<td><input type="hidden" name="parentUser" id="parentUser" value=${parentuser}></td>
 				</tr>
 				<tr colspan="2">
-				    <td><button>Check</button></td>
+				    <td><input type="submit" value="Submit"></td>
 				</tr>
 			</table>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
