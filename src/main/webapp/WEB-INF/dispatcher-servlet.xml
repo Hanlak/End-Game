@@ -37,5 +37,5 @@
     <bean id="qdao" class="com.endgame.dao.QuestionDao">
         <property name="template" ref="jt"></property>
     </bean>
-
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
 </beans>
