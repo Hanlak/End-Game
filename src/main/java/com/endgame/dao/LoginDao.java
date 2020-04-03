@@ -39,4 +39,14 @@ public class LoginDao {
         }
     }
 
+    public int updatePasswordViaMail(String email, String password) {
+        String query = "update endgameusers set password =? where email = ?";
+        try {
+            return template.update(query, password, email);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 }

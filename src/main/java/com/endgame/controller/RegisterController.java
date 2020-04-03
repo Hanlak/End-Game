@@ -21,7 +21,6 @@ public class RegisterController {
     protected ModelAndView register() {
         ModelAndView modelandview = new ModelAndView("register");
         return modelandview;
-
     }
 
     @PostMapping("/registerProcess")
