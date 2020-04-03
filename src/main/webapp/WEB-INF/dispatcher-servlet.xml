@@ -40,8 +40,8 @@
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.gmail.com"/>
         <property name="port" value="587"/>
-        <property name="username" value="prudhvi3914@gmail.com"/>
-        <property name="password" value="9963847488"/>
+        <property name="username" value="${email}"/>
+        <property name="password" value="${password}"/>
 
         <!-- The name of the property, following JavaBean naming conventions -->
         <property name="javaMailProperties">
@@ -52,5 +52,10 @@
                 <prop key="mail.debug">true</prop>
             </props>
         </property>
+    </bean>
+    <bean id="propertyPlaceholderConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="searchSystemEnvironment" value="true"/>
     </bean>
 </beans>
