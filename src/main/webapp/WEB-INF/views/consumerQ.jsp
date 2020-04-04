@@ -44,7 +44,7 @@
                         idAndAns.put(4,opts3);
                         List<String> opts4 = new ArrayList<>(Arrays.asList("TechOrFinance","Manufacturer&Engineering","Entertainment","Agriculture"));
                         idAndAns.put(5,opts4);
-                        List<String> opts5 = new ArrayList<>(Arrays.asList("God","MysticalForce","No One","Karma"));
+                        List<String> opts5 = new ArrayList<>(Arrays.asList("God","MysticalForce","NoOne","Karma"));
                         idAndAns.put(6,opts5);
                         List<String> opts6 = new ArrayList<>(Arrays.asList("soft","active","tough","lazy"));
                         idAndAns.put(7,opts6);
