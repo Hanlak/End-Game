@@ -13,8 +13,13 @@
             <%
             try{
             Map<Integer,String> questAndId = new LinkedHashMap<>();
-            questAndId.put(1,"what do you prefer in theatre?");
-            questAndId.put(2,"if he get a chance to travel where will he prefer?");
+            questAndId.put(1,"what do you prefer eating in the middle of movie?");
+            questAndId.put(2,"if you get a chance to travel where will you prefer?");
+            questAndId.put(3,"what makes you happy?");
+            questAndId.put(4, "what type of marriage you will prefer?");
+            questAndId.put(5,"In which below industry you loved to work?");
+            questAndId.put(6,"what you are believe in?");
+            questAndId.put(7,"what kind of guy you are?");
             Map<Integer,List<String>> idAndAns = new LinkedHashMap<>();
             List<String> opts = new ArrayList<>();
             opts.add("Popcorn");
@@ -28,7 +33,25 @@
             opts1.add("eastasia");
             opts1.add("europe");
             idAndAns.put(2,opts1);
-            for(int i=1;i<=2;i++){
+            List<String> opts2 = new ArrayList<>();
+            opts2.add("Home");
+            opts2.add("work");
+            opts2.add("travel");
+            opts2.add("Movies");
+            idAndAns.put(3,opts2);
+            List<String> opts3 = new ArrayList<>();
+            opts3.add("Love");
+            opts3.add("Love&Arrange");
+            opts3.add("Arranged");
+            opts3.add("Bachelor");
+            idAndAns.put(4,opts3);
+            List<String> opts4 = new ArrayList<>(Arrays.asList("TechOrFinance","Manufacturer&Engineering","Entertainment","Agriculture"));
+            idAndAns.put(5,opts4);
+            List<String> opts5 = new ArrayList<>(Arrays.asList("God","MysticalForce","NoOne","Karma"));
+            idAndAns.put(6,opts5);
+            List<String> opts6 = new ArrayList<>(Arrays.asList("soft","active","tough","lazy"));
+            idAndAns.put(7,opts6);
+            for(int i=1;i<=7;i++){
             %>
             <tr colspan="2">
                 <td><%=i%>.<%=questAndId.get(i) %></td>

@@ -54,13 +54,24 @@ public class ConsumerUrlController {
 
     @RequestMapping(value = "/processConsumerQuestions", method = RequestMethod.POST)
     public ModelAndView processConsumerQuestions(@SessionAttribute("ConsumerUser") ConsumerUser consumerUser,
-                                                 @RequestParam("1") String answer, @RequestParam("2") String answer2) {
+                                                 @RequestParam("1") String answer,
+                                                 @RequestParam("2") String answer2,
+                                                 @RequestParam("3") String answer3,
+                                                 @RequestParam("4") String answer4,
+                                                 @RequestParam("5") String answer5,
+                                                 @RequestParam("6") String answer6,
+                                                 @RequestParam("7") String answer7) {
         System.out.println(consumerUser.getParentUser());
         ModelAndView modelAndView = null;
         Map<String, Integer> questandAnsId = QuestionMapper.questIdAnsMap();
         List<String> answers = new ArrayList<>();
         answers.add(answer);
         answers.add(answer2);
+        answers.add(answer3);
+        answers.add(answer4);
+        answers.add(answer5);
+        answers.add(answer6);
+        answers.add(answer7);
         //ConsumerQuestionAndAnswerList
         List<Question> consumerList = new ArrayList<>();
         for (String ans : answers) {

@@ -1,8 +1,9 @@
 <html>
     <head>
-        <title>LogIn</title>
+        <title>FriendsGame</title>
     </head>
 	<body>
+	<h3> Friends </h3>
 		<form action="loginProcess" method="POST">
 		<h1>${message1}</h1>
 			<table>
