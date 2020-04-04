@@ -1,6 +1,6 @@
 package com.endgame.controller;
 
-import com.endgame.dao.LoginDao;
+import com.endgame.dao.UserDao;
 import com.endgame.model.DisplayResult;
 import com.endgame.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,25 +17,26 @@ import static com.endgame.util.RandomPassword.randomPassword;
 public class UserController {
 
     @Autowired
-    LoginDao loginDao;
-    @Autowired
     EndGameMail endGameMail;
+    @Autowired
+    UserDao userDao;
 
     @GetMapping("/displayfreindsResult")
     public ModelAndView displayResults(@SessionAttribute("user") User user, ModelAndView modelAndView) {
+        modelAndView = new ModelAndView("displayresult");
         if (user.getUsername() != null) {
-            List<DisplayResult> friendsList = loginDao.getfreindsList(user.getUsername());
+            List<DisplayResult> friendsList = userDao.getfreindsList(user.getUsername());
             friendsList.forEach(
                     displayResult -> {
-                        System.out.println("friend:" + displayResult.getUser() + ",Score:" + displayResult.getScore());
+                        System.out.println("friend:" + displayResult.getConsumer() + ",Score:" + displayResult.getResult());
                     });
             if (friendsList != null) {
-                modelAndView = new ModelAndView("displayresult");
                 modelAndView.addObject("friendresults", friendsList);
             } else {
-                modelAndView = new ModelAndView("displayresult");
                 modelAndView.addObject("info", "No one Answered the questions!!");
             }
+        } else {
+            modelAndView.addObject("info", "It seems the session is expired please login again");
         }
         return modelAndView;
     }
@@ -44,7 +45,7 @@ public class UserController {
     public ModelAndView forgotPasswordProcess(ModelAndView model, @RequestParam("email") String toEmail) {
         String randomPassword = randomPassword();
 
-        int updatecheck = loginDao.updatePasswordViaMail(toEmail, randomPassword);
+        int updatecheck = userDao.updatePasswordViaMail(toEmail, randomPassword);
         if (updatecheck != 0) {
             String sentcheck = endGameMail.endGameReadyToSendEmail(toEmail, "prudhvi3914@gmail.com", "end game password!", randomPassword);
             model = new ModelAndView("login");
@@ -81,7 +82,7 @@ public class UserController {
 
     @PostMapping("/updatepasswordprocess")
     public ModelAndView updatePasswordProcessor(@SessionAttribute("user") User user, @RequestParam("password") String password) {
-        int updatecheck = loginDao.updatePasswordViaUser(user.getUsername(), password);
+        int updatecheck = userDao.updatePasswordViaUser(user.getUsername(), password);
         if (updatecheck != 0) {
             ModelAndView modelAndView = new ModelAndView("login");
             modelAndView.addObject("msg", "password updated sucessfully");
@@ -94,10 +95,11 @@ public class UserController {
 
     @PostMapping("/updateemailprocess")
     public ModelAndView updateEmailProcessor(@SessionAttribute("user") User user, String email) {
-        int updatecheck = loginDao.updateEmailViaUser(user.getUsername(), email);
+        int updatecheck = userDao.updateEmailViaUser(user.getUsername(), email);
         ModelAndView modelAndView = new ModelAndView("emailupdate");
-        if (updatecheck != 0) {
-            modelAndView.addObject("msg", "mail update success");
+        if (updatecheck == 0) {
+            modelAndView.addObject("msg", "Mail has already registered try giving another mail");
+            return modelAndView;
         }
         modelAndView.addObject("msg", " mail has been updated successfully");
         return modelAndView;

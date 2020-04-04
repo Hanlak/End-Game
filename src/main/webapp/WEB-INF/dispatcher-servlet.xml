@@ -30,6 +30,9 @@
     <bean id="ldao" class="com.endgame.dao.LoginDao">
         <property name="template" ref="jt"></property>
     </bean>
+    <bean id="udao" class="com.endgame.dao.UserDao">
+        <property name="template" ref="jt"></property>
+    </bean>
 
     <bean id="rdao" class="com.endgame.dao.RegisterDao">
         <property name="template" ref="jt"></property>
