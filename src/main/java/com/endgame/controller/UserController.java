@@ -23,19 +23,20 @@ public class UserController {
 
     @GetMapping("/displayfreindsResult")
     public ModelAndView displayResults(@SessionAttribute("user") User user, ModelAndView modelAndView) {
+        modelAndView = new ModelAndView("displayresult");
         if (user.getUsername() != null) {
             List<DisplayResult> friendsList = userDao.getfreindsList(user.getUsername());
             friendsList.forEach(
                     displayResult -> {
-                        System.out.println("friend:" + displayResult.getUser() + ",Score:" + displayResult.getScore());
+                        System.out.println("friend:" + displayResult.getConsumer() + ",Score:" + displayResult.getResult());
                     });
             if (friendsList != null) {
-                modelAndView = new ModelAndView("displayresult");
                 modelAndView.addObject("friendresults", friendsList);
             } else {
-                modelAndView = new ModelAndView("displayresult");
                 modelAndView.addObject("info", "No one Answered the questions!!");
             }
+        } else {
+            modelAndView.addObject("info", "It seems the session is expired please login again");
         }
         return modelAndView;
     }

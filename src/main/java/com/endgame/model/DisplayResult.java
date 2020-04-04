@@ -1,22 +1,22 @@
 package com.endgame.model;
 
 public class DisplayResult {
-    String User;
-    int score;
+    String consumer;
+    int result;
 
-    public String getUser() {
-        return User;
+    public String getConsumer() {
+        return consumer;
     }
 
-    public void setUser(String user) {
-        User = user;
+    public void setConsumer(String consumer) {
+        this.consumer = consumer;
     }
 
-    public int getScore() {
-        return score;
+    public int getResult() {
+        return result;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setResult(int result) {
+        this.result = result;
     }
 }

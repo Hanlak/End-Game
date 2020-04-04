@@ -14,7 +14,6 @@ public class UserDao {
 
         this.template = template;
     }
-
     public int updatePasswordViaMail(String email, String password) {
         String query = "update endgameusers set password =? where email = ?";
         try {
@@ -44,7 +43,6 @@ public class UserDao {
             return 0;
         }
     }
-
     public List<DisplayResult> getfreindsList(String user) {
         //parentuser and consumer
         String query = "select consumer,result from consumerresult where parentuser = ?";
