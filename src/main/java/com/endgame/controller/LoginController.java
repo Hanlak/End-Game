@@ -24,7 +24,7 @@ public class LoginController {
         return new User();
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     protected ModelAndView login() {
         ModelAndView modelandview = new ModelAndView("login");
         return modelandview;

@@ -23,6 +23,7 @@ public class UserController {
 
     @GetMapping("/displayfreindsResult")
     public ModelAndView displayResults(@SessionAttribute("user") User user, ModelAndView modelAndView) {
+
         modelAndView = new ModelAndView("displayresult");
         if (user.getUsername() != null) {
             List<DisplayResult> friendsList = userDao.getfreindsList(user.getUsername());
