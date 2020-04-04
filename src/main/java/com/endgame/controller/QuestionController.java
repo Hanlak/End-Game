@@ -27,12 +27,24 @@ public class QuestionController {
     private Map<String, Integer> questIdAndMap;
 
     @RequestMapping(value = "/displayQuestion", method = RequestMethod.POST)
-    protected ModelAndView displayQuestion(@SessionAttribute("user") User user, @RequestParam("1") String answer, @RequestParam("2") String answer2, ModelAndView modelAndView) throws NoSuchAlgorithmException {
+    protected ModelAndView displayQuestion(@SessionAttribute("user") User user, @RequestParam("1") String answer,
+                                           @RequestParam("2") String answer2,
+                                           @RequestParam("3") String answer3,
+                                           @RequestParam("4") String answer4,
+                                           @RequestParam("5") String answer5,
+                                           @RequestParam("6") String answer6,
+                                           @RequestParam("7") String answer7,
+                                           ModelAndView modelAndView) throws NoSuchAlgorithmException {
         System.out.println(user.getUsername());
         List<Question> answersList = new ArrayList<>();
         List<String> answers = new ArrayList<>();
         answers.add(answer);
         answers.add(answer2);
+        answers.add(answer3);
+        answers.add(answer4);
+        answers.add(answer5);
+        answers.add(answer6);
+        answers.add(answer7);
         System.out.println(answer2);
         questIdAndMap = QuestionMapper.questIdAnsMap();
         answers.forEach(

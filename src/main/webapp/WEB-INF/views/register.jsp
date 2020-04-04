@@ -3,6 +3,7 @@
         <title>Register</title>
     </head>
 	<body>
+	<h3>Register for Friends</h3>
 		<form action="registerProcess" commandName="registerForm" method="POST">
 			<table>
 				<tr>
