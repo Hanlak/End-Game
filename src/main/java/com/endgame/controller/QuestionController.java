@@ -7,10 +7,7 @@ import com.endgame.util.QuestionMapper;
 import com.endgame.util.UrlTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -25,6 +22,20 @@ public class QuestionController {
     @Autowired
     QuestionDao questionDao;
     private Map<String, Integer> questIdAndMap;
+
+    @GetMapping("/showlink")
+    public ModelAndView showLink(ModelAndView modelAndView) {
+        String s = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString();
+        String hostname = UrlTransformer.getUrlDomainName(s);
+        modelAndView = new ModelAndView("urlview");
+        if (!hostname.isEmpty()) {
+            modelAndView.addObject("urlfinal", hostname);
+        } else {
+            modelAndView.addObject("urlfinal", "we are having problem with generating url.");
+        }
+        return modelAndView;
+
+    }
 
     @RequestMapping(value = "/displayQuestion", method = RequestMethod.POST)
     protected ModelAndView displayQuestion(@SessionAttribute("user") User user, @RequestParam("1") String answer,

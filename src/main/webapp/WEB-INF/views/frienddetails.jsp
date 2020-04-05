@@ -20,7 +20,7 @@
 	<body>
 <div class="container">
      <h2>Please Enter your name and check how far do you know your friend</h2>
-     <form action="displayConsumerQuestions" method = "post">
+     <form action="/displayConsumerQuestions" method = "post">
 	 <div class="form-group">
          <label for="user">Your Name:</label>
          <input type="text" class="form-control" id="user" placeholder="Enter your name" name="user" required>

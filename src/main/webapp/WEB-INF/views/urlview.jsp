@@ -28,7 +28,7 @@ container-fluid {
 <jsp:include page="header.jsp" />
 <div class ="container-fluid">
 <h3>Please share the below link with your friends.!</h2>
-<a href = "#">${urlfinal}</a>
+<b>${urlfinal}</b>
 </div>
 
 </body>
