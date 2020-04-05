@@ -39,9 +39,9 @@ public class LoginController {
                     && user.getPassword().equals(login.getPassword())) {
                 modelandview = new ModelAndView("index");
             } else {
-                modelandview = new ModelAndView("login", "msg", "Invalid credentials");
+                modelandview = new ModelAndView("login", "error", "Invalid credentials");
             }
-        } else modelandview = new ModelAndView("login", "msg", "user not existed");
+        } else modelandview = new ModelAndView("login", "error", "user not existed");
         return modelandview;
     }
 

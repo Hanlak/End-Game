@@ -24,7 +24,7 @@ public class RegisterController {
     }
 
     @PostMapping("/registerProcess")
-    protected ModelAndView registerProcess(@RequestParam("fName") String fname, @RequestParam("lName") String lname, @RequestParam("email") String email, @RequestParam("userName") String username, @RequestParam("password") String password) {
+    protected ModelAndView registerProcess(@RequestParam("firstname") String fname, @RequestParam("lastname") String lname, @RequestParam("email") String email, @RequestParam("userName") String username, @RequestParam("password") String password) {
 
         ModelAndView modelandview = new ModelAndView();
         Register register = new Register();

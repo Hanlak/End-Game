@@ -51,10 +51,10 @@ public class UserController {
             String sentcheck = endGameMail.endGameReadyToSendEmail(toEmail, "prudhvi3914@gmail.com", "end game password!", randomPassword);
             model = new ModelAndView("login");
             if (!sentcheck.equals("OK")) {
-                model.addObject("msg", "Encounter an issue while sending a password to you mail");
+                model.addObject("error", "Encounter an issue while sending a password to you mail");
                 return model;
             }
-            model.addObject("msg", "password has been sent to your registered mail");
+            model.addObject("error", "password has been sent to your registered mail");
         }
         return model;
     }
