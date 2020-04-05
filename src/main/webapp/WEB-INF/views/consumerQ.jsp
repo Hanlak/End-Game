@@ -10,13 +10,13 @@
             <%
             try{
                         Map<Integer,String> questAndId = new LinkedHashMap<>();
-                        questAndId.put(1,"what do you prefer eating in the middle of movie?");
-                        questAndId.put(2,"if you get a chance to travel where will you prefer?");
-                        questAndId.put(3,"what makes you happy?");
-                        questAndId.put(4, "what type of marriage you will prefer?");
-                        questAndId.put(5,"In which below industry you loved to work?");
-                        questAndId.put(6,"what you are believe in?");
-                        questAndId.put(7,"what kind of guy you are?");
+                        questAndId.put(1,"what does your prefer eating in the middle of movie?");
+                        questAndId.put(2,"if your friend get a chance to travel where will he/she prefer?");
+                        questAndId.put(3,"what makes your friend happy?");
+                        questAndId.put(4, "what type of marriage your friend will prefer?");
+                        questAndId.put(5,"In which below industry your friend loved to work?");
+                        questAndId.put(6,"what your friend are believe in?");
+                        questAndId.put(7,"what kind of guy your friend think he/she is?");
                         Map<Integer,List<String>> idAndAns = new LinkedHashMap<>();
                         List<String> opts = new ArrayList<>();
                         opts.add("Popcorn");
