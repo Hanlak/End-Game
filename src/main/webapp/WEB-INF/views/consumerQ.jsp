@@ -11,7 +11,7 @@
     <body>
     <div class ="container">
         <form action="processConsumerQuestions" method="POST">
-        <h1>Select your Answers</h1>
+        <h1>Choose Answers for all the options(mandatory)</h1>
         <div class="table-responsive">
         <table class ="table table-borderless">
             <%

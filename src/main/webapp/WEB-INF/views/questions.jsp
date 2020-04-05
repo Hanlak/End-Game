@@ -6,11 +6,13 @@
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+          <script>
+          </script>
     </head>
     <body>
     <div class ="container">
-        <form action="displayQuestion" method="POST">
-        <h3>Select your Answers</h3>
+        <form action="displayQuestion" onSubmit() = validation() method="POST">
+        <h3>please choose options for all the questions (mandatory)</h3>
           <div class="table-responsive">
         <table  class="table table-borderless">
             <%
