@@ -51,10 +51,10 @@ public class UserController {
             String sentcheck = endGameMail.endGameReadyToSendEmail(toEmail, "prudhvi3914@gmail.com", "end game password!", randomPassword);
             model = new ModelAndView("login");
             if (!sentcheck.equals("OK")) {
-                model.addObject("msg", "Encounter an issue while sending a password to you mail");
+                model.addObject("error", "Encounter an issue while sending a password to you mail");
                 return model;
             }
-            model.addObject("msg", "password has been sent to your registered mail");
+            model.addObject("error", "password has been sent to your registered mail");
         }
         return model;
     }
@@ -86,11 +86,11 @@ public class UserController {
         int updatecheck = userDao.updatePasswordViaUser(user.getUsername(), password);
         if (updatecheck != 0) {
             ModelAndView modelAndView = new ModelAndView("login");
-            modelAndView.addObject("msg", "password updated sucessfully");
+            modelAndView.addObject("error", "password updated sucessfully");
             return modelAndView;
         }
         ModelAndView modelAndView = new ModelAndView("updatepassword");
-        modelAndView.addObject("msg", "update password failed");
+        modelAndView.addObject("error", "update password failed");
         return modelAndView;
     }
 
@@ -99,10 +99,10 @@ public class UserController {
         int updatecheck = userDao.updateEmailViaUser(user.getUsername(), email);
         ModelAndView modelAndView = new ModelAndView("emailupdate");
         if (updatecheck == 0) {
-            modelAndView.addObject("msg", "Mail has already registered try giving another mail");
+            modelAndView.addObject("error", "Mail has already registered try giving another mail");
             return modelAndView;
         }
-        modelAndView.addObject("msg", " mail has been updated successfully");
+        modelAndView.addObject("error", " mail has been updated successfully");
         return modelAndView;
     }
 }
