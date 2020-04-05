@@ -13,7 +13,7 @@
         <form action="processConsumerQuestions" method="POST">
         <h1>Select your Answers</h1>
         <div class="table-responsive">
-        <table class ="table">
+        <table class ="table table-borderless">
             <%
             try{
                         Map<Integer,String> questAndId = new LinkedHashMap<>();

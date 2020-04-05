@@ -12,7 +12,7 @@
         <form action="displayQuestion" method="POST">
         <h3>Select your Answers</h3>
           <div class="table-responsive">
-        <table  class="table">
+        <table  class="table table-borderless">
             <%
             try{
             Map<Integer,String> questAndId = new LinkedHashMap<>();
