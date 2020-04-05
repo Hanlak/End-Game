@@ -24,7 +24,7 @@ public class RegisterController {
     }
 
     @PostMapping("/registerProcess")
-    protected ModelAndView registerProcess(@RequestParam("firstname") String fname, @RequestParam("lastname") String lname, @RequestParam("email") String email, @RequestParam("userName") String username, @RequestParam("password") String password) {
+    protected ModelAndView registerProcess(@RequestParam("firstname") String fname, @RequestParam("lastname") String lname, @RequestParam("email") String email, @RequestParam("username") String username, @RequestParam("password") String password) {
 
         ModelAndView modelandview = new ModelAndView();
         Register register = new Register();
@@ -36,9 +36,9 @@ public class RegisterController {
         register.setPassword(password);
         int check = registerDao.register(register);
         if (check > 0) {
-            modelandview.addObject("msg", "User registration successful.");
+            modelandview.addObject("error", "User registration successful.");
         } else {
-            modelandview.addObject("msg", "Error- check the console log.");
+            modelandview.addObject("error", "registration failed. please drop a mail to support");
         }
         modelandview.setViewName("login");
         return modelandview;
