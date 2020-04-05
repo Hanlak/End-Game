@@ -42,12 +42,12 @@ public class ConsumerUrlController {
             int check = questionDao.insertDefaultScore(consumerUser);
             if (check == 0) {
                 modelAndView = new ModelAndView("frienddetails");
-                modelAndView.addObject("errmsg", "defualt Score update failed");
+                modelAndView.addObject("error", "defualt Score update failed");
             }
             modelAndView = new ModelAndView("consumerQ");
         } else {
             modelAndView = new ModelAndView("frienddetails");
-            modelAndView.addObject("errmsg", "You have already Answered.if not please try to give your full name");
+            modelAndView.addObject("error", "You have already Answered.if not please try to give your full name");
         }
         return modelAndView;
     }

@@ -2,11 +2,18 @@
 <html>
     <head>
         <title>Select</title>
+        <meta charset="utf-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1">
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
+    <div class ="container">
         <form action="processConsumerQuestions" method="POST">
         <h1>Select your Answers</h1>
-        <table>
+        <div class="table-responsive">
+        <table class ="table">
             <%
             try{
                         Map<Integer,String> questAndId = new LinkedHashMap<>();
@@ -50,6 +57,7 @@
                         idAndAns.put(7,opts6);
             for(int i=1;i<=7;i++){
             %>
+            <tbody>
             <tr colspan="2">
                 <td><%=i%>.<%=questAndId.get(i) %></td>
             </tr>
@@ -69,6 +77,7 @@
                 <td><input type="radio" name=<%=i%> value=<%=idAndAns.get(i).get(3) %>>
                 <%=idAndAns.get(i).get(3) %></td>
             </tr>
+            </tbody>
             <%
             }
             }
@@ -80,5 +89,6 @@
         <button>Check Your Result</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
+        </div>
     </body>
 </html>

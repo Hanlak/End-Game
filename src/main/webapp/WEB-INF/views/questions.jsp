@@ -1,15 +1,18 @@
 <%@page import="java.util.*"%>
 <html>
     <head>
-        <title>Select</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-    <a href="/displayfreindsResult"><button>Attempted Results</button></a>
-    <br/>
-    <br/>
+    <div class ="container">
         <form action="displayQuestion" method="POST">
         <h3>Select your Answers</h3>
-        <table>
+          <div class="table-responsive">
+        <table  class="table">
             <%
             try{
             Map<Integer,String> questAndId = new LinkedHashMap<>();
@@ -53,6 +56,7 @@
             idAndAns.put(7,opts6);
             for(int i=1;i<=7;i++){
             %>
+            <tbody>
             <tr colspan="2">
                 <td><%=i%>.<%=questAndId.get(i) %></td>
             </tr>
@@ -72,6 +76,7 @@
                 <td><input type="radio" name=<%=i%> value=<%=idAndAns.get(i).get(3) %>>
                 <%=idAndAns.get(i).get(3) %></td>
             </tr>
+            </tbody>
             <%
             }
             }
@@ -80,8 +85,10 @@
             }
             %>
         </table>
-        <button>Generate link</button>
+       </div>
+        <button class = "btn btn-default">Generate Link</button>
         </form>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </div>
     </body>
 </html>
