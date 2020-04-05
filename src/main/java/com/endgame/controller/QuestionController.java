@@ -24,12 +24,13 @@ public class QuestionController {
     private Map<String, Integer> questIdAndMap;
 
     @GetMapping("/showlink")
-    public ModelAndView showLink(ModelAndView modelAndView) {
+    public ModelAndView showLink(@SessionAttribute("user") User user, ModelAndView modelAndView) {
         String s = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString();
         String hostname = UrlTransformer.getUrlDomainName(s);
+        String url = UrlTransformer.generateUrl(hostname, user.getUsername());
         modelAndView = new ModelAndView("urlview");
         if (!hostname.isEmpty()) {
-            modelAndView.addObject("urlfinal", hostname);
+            modelAndView.addObject("urlfinal", url);
         } else {
             modelAndView.addObject("urlfinal", "we are having problem with generating url.");
         }

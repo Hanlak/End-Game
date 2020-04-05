@@ -26,10 +26,10 @@
          <input type="text" class="form-control" id="user" placeholder="Enter your name" name="user" required>
        </div>
        	 <div class="form-group">
-                <input type="hidden" class="form-control" id="parentuser" name="parentuser" value =${parentuser}required>
+                <input type="hidden" class="form-control" id="parentuser" name="parentUser" value = ${parentuser}>
               </div>
        <div class="form-group">
-       <button type="submit" class="btn btn-default">Create</button>
+       <button type="submit" class="btn btn-default">Check Score</button>
        </div>
      </form>
      <c:if test="${not empty error}">
