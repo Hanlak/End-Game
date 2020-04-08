@@ -25,10 +25,9 @@
       <li><a href="updatepassword">Password Update</a></li>
     </ul>
     <ul class="nav navbar-nav pull-right">
-           <li><a href="/appLogout">logout</a></li>
+           <li><a href="/appLogout">Logout</a></li>
         </ul>
   </div>
 </nav>
 </body>
-
 </html>

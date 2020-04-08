@@ -8,18 +8,18 @@
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <style>
-        .form-group{
-        width:50%!important;
-        }
-        .alert-danger{
-        background-color: transparent;
-        font-size: 140%;
-        border: none
-        }
-        h2{
-         font-family: monospace;
-        }
-        </style>
+			body{
+				background-image:url("https://images.all-free-download.com/images/graphiclarge/friendship_background_joyful_people_icons_silhouette_handdrawn_sketch_6838443.jpg");
+				background-size:cover;
+				color:white;
+				}
+			label{
+				text-align:center;
+			}
+			.form-control{
+				width:20%;
+			}
+		</style>
 
     </head>
 	<body>
