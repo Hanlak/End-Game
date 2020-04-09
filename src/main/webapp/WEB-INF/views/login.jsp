@@ -4,9 +4,6 @@
   		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
          <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<style>
-			span{
-				color:red;
-			}
 			body{
 				background-image:url("https://images.all-free-download.com/images/graphiclarge/friendship_background_joyful_people_icons_silhouette_handdrawn_sketch_6838443.jpg");
 				background-size:cover;
@@ -17,6 +14,10 @@
 			}
 			.form-control{
 				width:20%;
+			}
+			span{
+				margin: 0 117px;
+				
 			}
 		</style>        
     </head>
@@ -29,7 +30,7 @@
 				<div class="form-group">
 					<label for="username" class="col-sm-1 control-label">UserName</label>
 					<input type="text" placeholder="UserName" name="username" class="form-control" id="username" required="required">
-					<span class="col-sm-1" id="user" class="reqError"></span>
+					<span  id="user" class="reqError"></span>
 				</div>
 				
 				<div class="form-group">
@@ -89,6 +90,8 @@ function onSubmit(){
 $('html').click(function(){
 	document.querySelector("h5").textContent ="";
 	document.querySelector("h5").classList.remove("alert-danger");
+	document.getElementById("user").innerHTML="";
+	document.getElementById("pass").innerHTML="";
 });
 
 
