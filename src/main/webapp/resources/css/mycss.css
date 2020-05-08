@@ -1,0 +1,50 @@
+
+#Game h3 {
+  color: blue;
+  font-weight: 300;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 35px;
+}
+#Game button {
+  float: left;
+  margin: 8px 0px 0px 8px;
+  padding: 15px 15px;
+  background: #4CAF50;;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+}
+
+#Game button:hover {
+  background: #6CE0DA;
+  color: #FFF;
+}
+
+.question input[type=radio] {
+  display: none;
+}
+
+.question label {
+  display: inline-block;
+  margin: 4px;
+  padding: 10px;
+  background: #AE63F7;
+  color: #4C3000;
+  width: calc(50% - 8px);
+  min-width: 50px;
+  cursor: pointer;
+  color:white;
+}
+
+.question label:hover {
+ background-color: #e7e7e7;
+ color: black;
+}
+
+.question input[type=radio]:checked + label {
+    border: 8px solid #ffffff;
+    background-color:green !important;
+}
