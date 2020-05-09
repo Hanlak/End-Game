@@ -2,8 +2,8 @@ package com.endgame.controller;
 
 import com.endgame.dao.QuestionDao;
 import com.endgame.model.Question;
+import com.endgame.model.Qview;
 import com.endgame.model.User;
-import com.endgame.util.QuestionMapper;
 import com.endgame.util.UrlTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class QuestionController {
@@ -22,6 +19,59 @@ public class QuestionController {
     @Autowired
     QuestionDao questionDao;
     private Map<String, Integer> questIdAndMap;
+    private static Map<Integer, String> quesOptMap = new LinkedHashMap<>();
+    private static Map<Integer, List<String>> idAndAns = new LinkedHashMap<>();
+
+    static {
+        quesOptMap.put(1, "what do you prefer eating in the middle of movie?");
+        quesOptMap.put(2, "if you get a chance to travel where will you prefer?");
+        quesOptMap.put(3, "what makes you happy?");
+        quesOptMap.put(4, "what type of marriage you will prefer?");
+        quesOptMap.put(5, "In which below industry you loved to work?");
+        quesOptMap.put(6, "what you are believe in?");
+        quesOptMap.put(7, "what kind of guy you are?");
+        List<String> opts = new ArrayList<>();
+        opts.add("Popcorn");
+        opts.add("IceCream");
+        opts.add("Drink");
+        opts.add("FrenchFries");
+        idAndAns.put(1, opts);
+        List<String> opts1 = new ArrayList<>();
+        opts1.add("NorthIndia");
+        opts1.add("southIndia");
+        opts1.add("eastasia");
+        opts1.add("europe");
+        idAndAns.put(2, opts1);
+        List<String> opts2 = new ArrayList<>();
+        opts2.add("Home");
+        opts2.add("work");
+        opts2.add("travel");
+        opts2.add("Movies");
+        idAndAns.put(3, opts2);
+        List<String> opts3 = new ArrayList<>();
+        opts3.add("Love");
+        opts3.add("Love&Arrange");
+        opts3.add("Arranged");
+        opts3.add("Bachelor");
+        idAndAns.put(4, opts3);
+        List<String> opts4 = new ArrayList<>(Arrays.asList("TechOrFinance", "Manufacturer&Engineering", "Entertainment", "Agriculture"));
+        idAndAns.put(5, opts4);
+        List<String> opts5 = new ArrayList<>(Arrays.asList("God", "MysticalForce", "NoOne", "Karma"));
+        idAndAns.put(6, opts5);
+        List<String> opts6 = new ArrayList<>(Arrays.asList("soft", "active", "tough", "lazy"));
+        idAndAns.put(7, opts6);
+    }
+
+    @GetMapping("/basequestion")
+    public ModelAndView showBaseQuestion(ModelAndView mv) {
+        Qview qview = new Qview();
+        qview.setId(1);
+        qview.setQuestion(quesOptMap.get(1));
+        qview.setOptions(idAndAns.get(1));
+        mv = new ModelAndView("questions");
+        mv.addObject("qview", qview);
+        return mv;
+    }
 
     @GetMapping("/showlink")
     public ModelAndView showLink(@SessionAttribute("user") User user, ModelAndView modelAndView) {
@@ -39,68 +89,68 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/displayQuestion", method = RequestMethod.POST)
-    protected ModelAndView displayQuestion(@SessionAttribute("user") User user, @RequestParam("1") String answer,
-                                           @RequestParam("2") String answer2,
-                                           @RequestParam("3") String answer3,
-                                           @RequestParam("4") String answer4,
-                                           @RequestParam("5") String answer5,
-                                           @RequestParam("6") String answer6,
-                                           @RequestParam("7") String answer7,
-                                           ModelAndView modelAndView) throws NoSuchAlgorithmException {
+    protected ModelAndView displayQuestion(@SessionAttribute("user") User user,
+                                           @RequestParam("game") String answer,
+                                           @RequestParam("id") String id,
+                                           ModelAndView modelAndView) {
         System.out.println(user.getUsername());
-        List<Question> answersList = new ArrayList<>();
-        List<String> answers = new ArrayList<>();
-        answers.add(answer);
-        answers.add(answer2);
-        answers.add(answer3);
-        answers.add(answer4);
-        answers.add(answer5);
-        answers.add(answer6);
-        answers.add(answer7);
-        System.out.println(answer2);
-        questIdAndMap = QuestionMapper.questIdAnsMap();
-        answers.forEach(
-                ans -> {
-                    Question question = new Question();
-                    question.setName(user.getUsername());
-                    question.setAnswer(ans);
-                    question.setQuestionId(questIdAndMap.get(ans));
-                    answersList.add(question);
-                }
-        );
+        System.out.println(id);
+        System.out.println(answer);
+        int qid = Integer.parseInt(id);
+        if (qid != 7) {
+            Question question = new Question();
+            question.setName(user.getUsername());
+            question.setAnswer(answer);
+            question.setQuestionId(qid);
+            boolean check = questionUpdateUtil(question);
+            qid = qid + 1;
+            Qview qview = new Qview();
+            qview.setId(qid);
+            qview.setQuestion(quesOptMap.get(qid));
+            qview.setOptions(idAndAns.get(qid));
+            modelAndView = new ModelAndView("questions");
+            modelAndView.addObject("qview", qview);
+            if (!check) {
+                modelAndView.addObject("error", "prev question update failed");
+                //show the question again.
+            }
+            return modelAndView;
+        }
+        Question question = new Question();
+        question.setName(user.getUsername());
+        question.setAnswer(answer);
+        question.setQuestionId(qid);
+        boolean check = questionUpdateUtil(question);
         String s = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString();
         String hostname = UrlTransformer.getUrlDomainName(s);
-        String url = null;
-        try {
-            url = UrlTransformer.generateUrl(hostname, user.getUsername());
-            //check user and id already exists;
-            List<Integer> insertChecks = new ArrayList<>();
-            List<Integer> updateChecks = new ArrayList<>();
-            for (Question question : answersList) {
-                Question q = questionDao.getQuestionByUserAndId(question.getName(), question.getQuestionId());
-                if (q != null) {
-                    int updateCheck = questionDao.updateQuestionAns(question);
-                    updateChecks.add(updateCheck);
-                    if (updateCheck == 0)
-                        System.out.println("updation of ans for the question" + question.getQuestionId() + "failed");
-                } else {
-                    int insertCheck = questionDao.insertQuestion(question);
-                    insertChecks.add(insertCheck);
-                    if (insertCheck == 0)
-                        System.out.println("insertion of ans for the question" + question.getQuestionId() + "failed");
-                }
-            }
-            if (!insertChecks.contains(0) && !updateChecks.contains(0)) {
-                System.out.println("All Answers Updated Successfully");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String url = UrlTransformer.generateUrl(hostname, user.getUsername());
         System.out.println(hostname);
         System.out.println(url);
         modelAndView = new ModelAndView("urlview");
         modelAndView.addObject("urlfinal", url);
-
         return modelAndView;
+    }
+
+    private boolean questionUpdateUtil(Question question) {
+        Question q = questionDao.getQuestionByUserAndId(question.getName(), question.getQuestionId());
+
+        if (q != null) {
+            int updateCheck = questionDao.updateQuestionAns(question);
+            if (updateCheck == 0) {
+                System.out.println(
+                        "updation of ans for the question" + question.getQuestionId() + "failed");
+                return false;
+            }
+            return true;
+        } else {
+            int insertCheck = questionDao.insertQuestion(question);
+            if (insertCheck == 0) {
+                System.out.println(
+                        "insertion of ans for the question" + question.getQuestionId() + "failed");
+                return false;
+            }
+            return true;
+        }
+
     }
 }

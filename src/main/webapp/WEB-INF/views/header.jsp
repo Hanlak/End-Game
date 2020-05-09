@@ -23,6 +23,9 @@
       <li><a href="about">About</a></li>
       <li><a href="emailupdate">Email Update</a></li>
       <li><a href="updatepassword">Password Update</a></li>
+      <li><a href="/basequestion">Show Questions</a></li>
+      <li><a href="/showlink">Show Link</a></li>
+      <li><a href ="/displayfreindsResult">Results</a></li>
     </ul>
     <ul class="nav navbar-nav pull-right">
            <li><a href="/appLogout">Logout</a></li>

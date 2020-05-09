@@ -45,7 +45,7 @@ public class UserDao {
     }
     public List<DisplayResult> getfreindsList(String user) {
         //parentuser and consumer
-        String query = "select consumer,result from consumerresult where parentuser = ?";
+        String query = "select consumer,result from consumerresult where parentuser = ? and showresult =1";
         try {
             return template.query(query, new Object[]{user}, new BeanPropertyRowMapper<>(DisplayResult.class));
         } catch (EmptyResultDataAccessException e) {

@@ -1,9 +1,12 @@
+
 <html>
 <head>
     <title>Welcome</title>
 </head>
 <body>
+<div>
 <jsp:include page="header.jsp" />
-<jsp:include page="questions.jsp" />
+</div>
+</br>
 </body>
 </html>
