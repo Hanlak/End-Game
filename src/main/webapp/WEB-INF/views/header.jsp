@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
   <meta charset="utf-8">
@@ -5,44 +6,31 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-   .jumbotron{
-              background-color: transparent;
-              font-family: monospace;
-              display: inline-block;
-              }
-              .form-group #email{
-               width:50%!important;
-                }
-              .form-group #password{
-                 width:50%!important;
-              }
-              .alert-danger{
-                 background-color: transparent;
-                  font-size: 140%;
-                  border: none;
-                  }
+  <style type="text/css">
+	.navbar-default .navbar-nav>li>a:hover {
+  		color: #4169E1;
+  	}
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default bg-dark">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/index">Friends-Game</a>
+      <a class="navbar-brand" href="/index">END-GAME</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/index">Home</a></li>
       <li><a href="about">About</a></li>
       <li><a href="emailupdate">Email Update</a></li>
       <li><a href="updatepassword">Password Update</a></li>
-      <li><a href="/displayfreindsResult">Results</a></li>
-      <li><a href="/showlink">ShowLink</a></li>
+      <li><a href="/basequestion">Show Questions</a></li>
+      <li><a href="/showlink">Show Link</a></li>
+      <li><a href ="/displayfreindsResult">Results</a></li>
     </ul>
     <ul class="nav navbar-nav pull-right">
-           <li class="active"><a href="/appLogout">logout</a></li>
+           <li><a href="/appLogout">Logout</a></li>
         </ul>
   </div>
 </nav>
 </body>
-
 </html>

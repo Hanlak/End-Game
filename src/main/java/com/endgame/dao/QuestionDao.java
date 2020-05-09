@@ -1,6 +1,7 @@
 package com.endgame.dao;
 
 import com.endgame.model.ConsumerUser;
+import com.endgame.model.DisplayResult;
 import com.endgame.model.Question;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -46,7 +47,7 @@ public class QuestionDao {
     }
 
     public int insertDefaultScore(ConsumerUser consumerUser) {
-        String query = "insert into consumerresult values(?,?,0)";
+        String query = "insert into consumerresult values(?,?,0,0)";
         try {
             return template.update(query, consumerUser.getParentUser(), consumerUser.getUser());
         } catch (Exception e) {
@@ -64,6 +65,15 @@ public class QuestionDao {
         }
     }
 
+    public Question getAnsByQuesId(String username, String id) {
+        String query = "select * from questions where username =? and questionid=?";
+        try {
+            return template.queryForObject(query, new Object[]{username, id}, new BeanPropertyRowMapper<>(Question.class));
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
     public List<Question> getAllQuestionOfUser(String parentuser) {
         String query = "select * from questions where username = ?";
         try {
@@ -74,13 +84,38 @@ public class QuestionDao {
         }
     }
 
-    public int updateResult(ConsumerUser consumerUser, int score) {
-        String query = "update consumerresult set result = ? where parentuser =? and consumer =?";
+    public int updateResult(ConsumerUser consumerUser, int score, int showresult) {
+        String query = "update consumerresult set result = ?,showresult = ? where parentuser =? and consumer =?";
         try {
-            return template.update(query, score, consumerUser.getParentUser(), consumerUser.getUser());
+            return template.update(query, score, showresult, consumerUser.getParentUser(), consumerUser.getUser());
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    public int updateShowResultToONe(ConsumerUser consumerUser) {
+        String query = "update consumerresult set showresult =? where parentuser =? and consumer =?";
+        try {
+            return template.update(query, 1, consumerUser.getParentUser(), consumerUser.getUser());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int getShowResult(ConsumerUser consumerUser) {
+        String query = "select showresult from consumerresult where parentuser =? and consumer = ?";
+        return template.queryForObject(query, new Object[]{consumerUser.getParentUser(), consumerUser.getUser()}, Integer.class);
+    }
+
+    public DisplayResult getResult(ConsumerUser consumerUser) {
+        String query = "select consumer,result from consumerresult where parentuser = ? and consumer = ?";
+        try {
+            return template.queryForObject(query, new Object[]{consumerUser.getParentUser(), consumerUser.getUser()},
+                    new BeanPropertyRowMapper<>(DisplayResult.class));
+        } catch (EmptyResultDataAccessException e) {
+            return null;
         }
     }
 }
