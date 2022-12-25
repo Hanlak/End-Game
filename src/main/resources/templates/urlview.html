@@ -1,3 +1,5 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <title>URL</title>
@@ -25,10 +27,10 @@ container-fluid {
 
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<div th:replace="/header :: header"> </div>
 <div class ="container-fluid">
-<h3>Please share the below link with your friends.!</h2>
-<b>${urlfinal}</b>
+<h3>Please share the below link with your friends.!</h3>
+<b th:text = "${urlfinal}"></b>
 </div>
 
 </body>

@@ -1,6 +1,7 @@
 package com.endgame.dao;
 
 import com.endgame.model.DisplayResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,12 +9,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 public class UserDao {
-    JdbcTemplate template;
+    @Autowired
+    private JdbcTemplate template;
 
-    public void setTemplate(JdbcTemplate template) {
-
-        this.template = template;
-    }
     public int updatePasswordViaMail(String email, String password) {
         String query = "update endgameusers set password =? where email = ?";
         try {
@@ -43,6 +41,7 @@ public class UserDao {
             return 0;
         }
     }
+
     public List<DisplayResult> getfreindsList(String user) {
         //parentuser and consumer
         String query = "select consumer,result from consumerresult where parentuser = ? and showresult =1";

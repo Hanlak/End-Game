@@ -83,8 +83,8 @@ public class UserController {
 
     @PostMapping("/updatepasswordprocess")
     public ModelAndView updatePasswordProcessor(@SessionAttribute("user") User user, @RequestParam("password") String password) {
-        int updatecheck = userDao.updatePasswordViaUser(user.getUsername(), password);
-        if (updatecheck != 0) {
+        int updateCheck = userDao.updatePasswordViaUser(user.getUsername(), password);
+        if (updateCheck != 0) {
             ModelAndView modelAndView = new ModelAndView("login");
             modelAndView.addObject("error", "password updated sucessfully");
             return modelAndView;
@@ -96,9 +96,9 @@ public class UserController {
 
     @PostMapping("/updateemailprocess")
     public ModelAndView updateEmailProcessor(@SessionAttribute("user") User user, String email) {
-        int updatecheck = userDao.updateEmailViaUser(user.getUsername(), email);
+        int updateCheck = userDao.updateEmailViaUser(user.getUsername(), email);
         ModelAndView modelAndView = new ModelAndView("emailupdate");
-        if (updatecheck == 0) {
+        if (updateCheck == 0) {
             modelAndView.addObject("error", "Mail has already registered try giving another mail");
             return modelAndView;
         }

@@ -1,3 +1,5 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <title>Success</title>
@@ -22,9 +24,9 @@
   <h1>Friends Game</h1>
   <div class="row">
     <div class="col-lg-4" style="background-color:lavender;">Your Score: </div>
-    <div class="col-lg-8" style="background-color:lavenderblush;">${result}</div>
+    <div class="col-lg-8" style="background-color:lavenderblush;"><span th:value="${result}"></span></div>
   </div>
-  <p> if interested.. please give a try by joining friends game: <a href="/">click here to login</a></p>
+  <p> if interested please give a try by joining friends game: <a href="/">click here to login</a></p>
 </div>
 </body>
 </html>

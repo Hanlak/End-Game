@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .alert-danger{
+              background-color: transparent;
+              font-size: 140%;
+              border: none
+        }
+
+    </style>
+    <div th:replace="/header :: header"></div>
+</head>
+
+<body>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+            </thead>
+            <tr th:each="result: ${friendresults}">
+                <td th:text="${result.consumer}"></td>
+                <td th:text="${result.result}"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="alert alert-danger" th:if="${info} == ''"><span th:text="${info}"></span></div>
+</div>
+</body>
+</html>

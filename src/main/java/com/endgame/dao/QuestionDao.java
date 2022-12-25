@@ -3,6 +3,7 @@ package com.endgame.dao;
 import com.endgame.model.ConsumerUser;
 import com.endgame.model.DisplayResult;
 import com.endgame.model.Question;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,12 +11,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 public class QuestionDao {
-
-    JdbcTemplate template;
-
-    public void setTemplate(JdbcTemplate template) {
-        this.template = template;
-    }
+    @Autowired
+    private JdbcTemplate template;
 
     public Question getQuestionByUserAndId(String username, int id) {
         String query = "select * from questions where username = ? and questionid=?";

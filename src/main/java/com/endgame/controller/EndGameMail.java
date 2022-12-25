@@ -1,15 +1,15 @@
 package com.endgame.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service("endgameEmail")
 public class EndGameMail {
 
     @Autowired
-    MailSender endgamemail;
+    JavaMailSender endGameEmail;
 
     public String endGameReadyToSendEmail(String toAddress, String fromAddress, String subject, String msgBody) {
 
@@ -18,7 +18,7 @@ public class EndGameMail {
         endgameMsg.setTo(toAddress);
         endgameMsg.setSubject(subject);
         endgameMsg.setText(msgBody);
-        endgamemail.send(endgameMsg);
+        endGameEmail.send(endgameMsg);
         return "OK";
     }
 }

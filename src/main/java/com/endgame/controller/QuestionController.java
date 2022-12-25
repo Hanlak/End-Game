@@ -16,11 +16,8 @@ import java.util.*;
 @Controller
 public class QuestionController {
 
-    @Autowired
-    QuestionDao questionDao;
-    private Map<String, Integer> questIdAndMap;
-    private static Map<Integer, String> quesOptMap = new LinkedHashMap<>();
-    private static Map<Integer, List<String>> idAndAns = new LinkedHashMap<>();
+    private static final Map<Integer, String> quesOptMap = new LinkedHashMap<>();
+    private static final Map<Integer, List<String>> idAndAns = new LinkedHashMap<>();
 
     static {
         quesOptMap.put(1, "what do you prefer eating in the middle of movie?");
@@ -29,7 +26,7 @@ public class QuestionController {
         quesOptMap.put(4, "what type of marriage you will prefer?");
         quesOptMap.put(5, "In which below industry you loved to work?");
         quesOptMap.put(6, "what you are believe in?");
-        quesOptMap.put(7, "what kind of guy you are?");
+        quesOptMap.put(7, "what kind of guy/girl you are?");
         List<String> opts = new ArrayList<>();
         opts.add("Popcorn");
         opts.add("IceCream");
@@ -61,6 +58,10 @@ public class QuestionController {
         List<String> opts6 = new ArrayList<>(Arrays.asList("soft", "active", "tough", "lazy"));
         idAndAns.put(7, opts6);
     }
+
+    @Autowired
+    QuestionDao questionDao;
+    private Map<String, Integer> questIdAndMap;
 
     @GetMapping("/basequestion")
     public ModelAndView showBaseQuestion(ModelAndView mv) {

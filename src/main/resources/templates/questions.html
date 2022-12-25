@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="${pageContext.request.contextPath}/resources/css/mycss.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/myscript.js"></script>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h3>Please Share Your Opinions</h3>
+        <form action="/displayQuestion" method="post">
+            <span th:text="${qview.id}+'.'+ ${qview.question}"></span>
+            <tr th:each="option: ${qview.options}">
+                <div class="question">
+                    <th>
+                        <input type="radio" name="game" id="game" th:value="${option}" > <span th:text="${option}"/>
+                    </th>
+                </div>
+            </tr>
+            <input type="hidden" name="id" th:value="${qview.id}"/>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+    </div>
+</div>
+</body>
+</head>
+</html>
