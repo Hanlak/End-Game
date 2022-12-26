@@ -35,7 +35,7 @@ public class ConsumerUrlController {
         List<String> opts1 = new ArrayList<>();
         opts1.add("NorthIndia");
         opts1.add("southIndia");
-        opts1.add("eastasia");
+        opts1.add("eastAsia");
         opts1.add("europe");
         idAndAns.put(2, opts1);
         List<String> opts2 = new ArrayList<>();

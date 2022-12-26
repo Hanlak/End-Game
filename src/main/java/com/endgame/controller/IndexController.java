@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ModelAndView hello(ModelAndView model) {
+    public ModelAndView index(ModelAndView model) {
         model = new ModelAndView("index");
         return model;
     }

@@ -139,7 +139,7 @@ public class QuestionController {
             int updateCheck = questionDao.updateQuestionAns(question);
             if (updateCheck == 0) {
                 System.out.println(
-                        "updation of ans for the question" + question.getQuestionId() + "failed");
+                        "update ans for the question" + question.getQuestionId() + "failed");
                 return false;
             }
             return true;
